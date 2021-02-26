@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home/home_screen.dart';
+import 'screens/init/init_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Proyecto final modelos 1',
       theme: ThemeData(),
-      home: HomeScreen(),
+      home: InitScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

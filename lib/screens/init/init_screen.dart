@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 
-class HomeScreen extends StatefulWidget {
+class InitScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _InitScreenState createState() => _InitScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _InitScreenState extends State<InitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
+              CustomExpanded(flex: 2),
               Text(
                 "Presentado por:",
                 style: GoogleFonts.poppins(
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-
+              CustomExpanded(flex: 2),
               Text(
                 "Presentado a:",
                 style: GoogleFonts.poppins(
@@ -62,15 +63,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage('images/escudo.png'),
-                    fit: BoxFit.fitHeight,
+              CustomExpanded(flex: 2),
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                     // builder: (context) => RateRestaurant(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: ExactAssetImage('images/escudo.png'),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
-              )
+              ),
+              CustomExpanded(),
             ],
           ),
         ),
