@@ -23,7 +23,7 @@ class _InitScreenState extends State<InitScreen> {
               Text(
                 "PROYECTO FINAL DE MODELOS 1",
                 style: GoogleFonts.poppins(
-                  textStyle: Styles.titleHomeScreen
+                  textStyle: Styles.titleInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -31,21 +31,21 @@ class _InitScreenState extends State<InitScreen> {
               Text(
                 "Presentado por:",
                 style: GoogleFonts.poppins(
-                    textStyle: Styles.subTitleHomeScreen
+                    textStyle: Styles.subTitleInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),
               Text(
                 "Santiago Rios Valero - 20181020017",
                 style: GoogleFonts.poppins(
-                    textStyle: Styles.labelHomeScreen
+                    textStyle: Styles.labelInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),
               Text(
                 "Juan Sebastián Gonzázlez Forero - 20181020029",
                 style: GoogleFonts.poppins(
-                    textStyle: Styles.labelHomeScreen
+                    textStyle: Styles.labelInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -53,14 +53,14 @@ class _InitScreenState extends State<InitScreen> {
               Text(
                 "Presentado a:",
                 style: GoogleFonts.poppins(
-                    textStyle: Styles.subTitleHomeScreen
+                    textStyle: Styles.subTitleInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),
               Text(
                 "Simar Enrique Herrera Jimenez",
                 style: GoogleFonts.poppins(
-                    textStyle: Styles.labelHomeScreen
+                    textStyle: Styles.labelInitScreen
                 ),
                 textAlign: TextAlign.center,
               ),

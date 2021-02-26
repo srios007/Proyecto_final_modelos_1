@@ -30,7 +30,7 @@ class OptionRow extends StatelessWidget {
               child: Icon(
                 iconData,
                 size: 24,
-                color: Palette.lightRed.withOpacity(0.85),
+                color: Palette.lightGreen.withOpacity(0.85),
               ),
             ),
             Container(

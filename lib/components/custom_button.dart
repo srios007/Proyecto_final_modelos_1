@@ -31,13 +31,13 @@ class CustomButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Palette.lightRed,
+              color: canPush? Palette.transparent :Palette.mainBlue,
               width: 2
             ),
             gradient: canPush
                 ? LinearGradient(
-                    colors: [Palette.lightRed, Palette.lightRed],
-                    stops: [0.5, 0.8],
+                    colors: [Palette.lightGreen, Palette.mainBlue],
+                    stops: [0.4, 0.9],
                     begin: FractionalOffset.centerLeft,
                     end: FractionalOffset.centerRight,
                   )
@@ -63,8 +63,8 @@ class CustomButton extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 15,
                       color: canPush
-                        ? Palette.white
-                          :Palette.lightRed
+                        ? Palette.mainBlue
+                          :Palette.mainBlue
                     ),
                   ),
             onPressed: () {
