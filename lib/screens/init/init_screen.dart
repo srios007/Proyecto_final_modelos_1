@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
+import 'package:proyecto_modelos_1/screens/screens.dart';
 
 class InitScreen extends StatefulWidget {
   @override
@@ -70,7 +71,7 @@ class _InitScreenState extends State<InitScreen> {
                   Navigator.push(
                     context,
                     CupertinoPageRoute(
-                     // builder: (context) => RateRestaurant(),
+                      builder: (context) => HomeScreen(),
                     ),
                   );
                 },
