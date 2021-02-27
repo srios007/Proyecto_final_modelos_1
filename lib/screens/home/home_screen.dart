@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Text(
-                "Nombre - titulo del juego",
+                "Una nueva aventura mediante patrones".toUpperCase(),
                 style: GoogleFonts.poppins(
                   textStyle: Styles.titleHomeScreen
                 ),
@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: "Instrucciones",
                 onPressed: (){},
                 canPush: true,
+
               ),
               CustomExpanded(),
 

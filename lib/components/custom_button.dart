@@ -54,7 +54,7 @@ class CustomButton extends StatelessWidget {
                     height: 15,
                     width: 15,
                     child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Palette.white),
+                      valueColor: AlwaysStoppedAnimation<Color>(Palette.mainBlue),
                       strokeWidth: 3,
                     ),
                   )
@@ -62,9 +62,7 @@ class CustomButton extends StatelessWidget {
                     title ?? "Continuar",
                     style: GoogleFonts.poppins(
                       fontSize: 15,
-                      color: canPush
-                        ? Palette.mainBlue
-                          :Palette.mainBlue
+                      color: Palette.mainBlue
                     ),
                   ),
             onPressed: () {
