@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
@@ -12,7 +13,8 @@ class ComponentScene extends StatelessWidget {
       this.story,
       this.onPressedLeft,
       this.onPressedRight,
-      this.builder});
+      this.builder,
+      this.onPressedContinue});
 
   String tittle;
   @required
@@ -21,60 +23,81 @@ class ComponentScene extends StatelessWidget {
   String story;
   Function onPressedLeft;
   Function onPressedRight;
+  Function onPressedContinue;
   BuilderSceneBase builder;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Text(
-              builder.addTittle(tittle) ?? "",
-              style: GoogleFonts.poppins(textStyle: Styles.titleScene),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 250,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: ExactAssetImage(builder.addImage(imageRoute)),
-                  fit: BoxFit.fitWidth,
+      child: CustomProjectScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            tittle != null
+            ?Center(
+              child: Text(
+                builder.addTittle(tittle) ?? "",
+                style: GoogleFonts.poppins(textStyle: Styles.titleScene),
+              ),
+            )
+            : const SizedBox.shrink(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 250,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: ExactAssetImage(builder.addImage(imageRoute)),
+                    fit: BoxFit.fitWidth,
+                  ),
                 ),
               ),
             ),
-          ),
-          Text(
-            builder.addStory(story),
-            style: GoogleFonts.poppins(textStyle: Styles.labelScene),
-            textAlign: TextAlign.start,
-          ),
-          onPressedLeft != null
-              ? Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomButton(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          onPressed: onPressedLeft,
-                          title: "Pelear",
-                          canPush: true),
-                      CustomButton(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          onPressed: onPressedRight,
-                          title: "Escapar",
-                          canPush: true)
-                    ],
+            story != null
+                ? Text(
+                    builder.addStory(story) ?? "",
+                    style: GoogleFonts.poppins(textStyle: Styles.labelScene),
+                    textAlign: TextAlign.start,
+                  )
+                : Center(
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Palette.mainBlue),
+                        strokeWidth: 3,
+                      ),
+                    ),
                   ),
-                )
-              : const SizedBox.shrink()
-        ],
+            CustomExpanded(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: onPressedLeft != null
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomButton(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            onPressed: onPressedLeft,
+                            title: "Pelear",
+                            canPush: true),
+                        CustomButton(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            onPressed: onPressedRight,
+                            title: "Escapar",
+                            canPush: true)
+                      ],
+                    )
+                  : CustomButton(
+                      onPressed: onPressedContinue,
+                      title: "Continuar",
+                      canPush: true),
+            )
+          ],
+        ),
       ),
     );
   }
