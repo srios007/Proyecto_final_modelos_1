@@ -1,8 +1,8 @@
 import '../patterns.dart';
 
 class Client {
+  BuilderSceneBase builderScene;
   void createScene(int type) {
-    BuilderSceneBase builderScene;
     switch (type) {
       case 1:
         {
@@ -20,7 +20,10 @@ class Client {
           builderScene = new SceneWithDecisionAndTittle();
         }
         break;
-
     }
+  }
+
+  BuilderSceneBase getScene() {
+    return builderScene;
   }
 }

@@ -14,7 +14,5 @@ class SceneWithTittle extends BuilderSceneBase{
     return decision;
   }
 
-  //String addImage(String imageRoute);
 
-  //String addStory(String story);
 }
