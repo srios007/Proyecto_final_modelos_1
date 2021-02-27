@@ -1,2 +1,2 @@
 /// USER
-export 'user/user_model.dart';
+export 'user/label_model.dart';

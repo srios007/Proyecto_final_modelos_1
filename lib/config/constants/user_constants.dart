@@ -4,4 +4,4 @@ import 'package:proyecto_modelos_1/model/models.dart';
 // No tocarlo ni moverlo de acá.
 
 
-User user = User();
+Label user = Label();

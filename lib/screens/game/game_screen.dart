@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
+import 'package:proyecto_modelos_1/model/models.dart';
 import 'package:proyecto_modelos_1/patterns/patterns.dart';
 
 class GameScreen extends StatefulWidget {
@@ -12,6 +14,7 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   bool decision;
   List<Widget> scenes= [];
+  List <Label> labelsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class _GameScreenState extends State<GameScreen> {
   }
   @override
   void initState() {
-    // TODO: implement initState
+    _getRestaurants();
     scenes = [
       ComponentScene(
         builder: SceneBuilder().createScene(3),
@@ -73,4 +76,26 @@ class _GameScreenState extends State<GameScreen> {
     ];
     super.initState();
   }
+
+void _getRestaurants() {
+
+  Firestore.instance.collection("labels").getDocuments().then((querySnapshot) {
+
+      if (querySnapshot.documents.isNotEmpty) {
+        labelsList.clear();
+        querySnapshot.documents.forEach((labelDoc) {
+          labelsList.add(
+              Label(
+            id: labelDoc.documentID,
+            label: labelDoc.data["label"],
+
+          ));
+        });
+        print(labelsList.length);
+      }
+
+    }).catchError((e) {
+    });
+  }
+
 }
