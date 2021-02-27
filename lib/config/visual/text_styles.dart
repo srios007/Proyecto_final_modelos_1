@@ -27,16 +27,21 @@ class Styles {
       fontWeight: FontWeight.w700,
       letterSpacing: 1.2
   );
-  static TextStyle subTitleHomeScreen = TextStyle(
-      color: Palette.mainBlue,
-      fontSize: 20,
-      fontWeight:
-      FontWeight.w600
-  );
   static TextStyle labelHomeScreen = TextStyle(
       color: Palette.mainBlue,
       fontSize: 14,
       fontWeight: FontWeight.w400
   );
-
+  /// SCENE
+  static TextStyle titleScene = TextStyle(
+      color: Palette.mainBlue,
+      fontSize: 25,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1.2
+  );
+  static TextStyle labelScene= TextStyle(
+      color: Palette.black,
+      fontSize: 14,
+      fontWeight: FontWeight.w400
+  );
 }

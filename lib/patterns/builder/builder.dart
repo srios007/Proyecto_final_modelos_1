@@ -1,8 +1,9 @@
 import '../patterns.dart';
 
 class SceneBuilder{
-  void createScene(int type){
+  BuilderSceneBase createScene(int type){
     Client client = Client();
     client.createScene(type);
+    return client.getScene();
   }
 }

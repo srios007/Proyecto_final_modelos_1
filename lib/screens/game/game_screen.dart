@@ -52,7 +52,7 @@ class _GameScreenState extends State<GameScreen> {
         child: Column(
           children: [
             ComponentScene(
-              builder: SceneWithDecisionAndTittle(),
+              builder: SceneBuilder().createScene(3),
               tittle: "escena de prueba",
               imageRoute: "images/portada.jpg",
               story: "Esto es una prueba",
