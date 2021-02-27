@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     this.shadowColor,
     this.isLoading = false,
     this.canPush = false,
+    this.width
   });
   String title;
   Color backgroundColor;
@@ -19,6 +20,7 @@ class CustomButton extends StatelessWidget {
   Function onPressed;
   bool isLoading;
   bool canPush;
+  double width;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class CustomButton extends StatelessWidget {
       children: <Widget>[
         Container(
           height: 63,
-          width: MediaQuery.of(context).size.width,
+          width: width ?? MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(

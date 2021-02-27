@@ -2,13 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
+import 'package:proyecto_modelos_1/patterns/patterns.dart';
 
-class Gamescreen extends StatefulWidget {
+class GameScreen extends StatefulWidget {
   @override
-  _GamescreenState createState() => _GamescreenState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class _GamescreenState extends State<Gamescreen> {
+class _GameScreenState extends State<GameScreen> {
+  bool decision;
+  List<Widget> scenes= [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    scenes = [
+      ComponentScene(
+        builder: SceneWithDecisionAndTittle(),
+        tittle: "escena de prueba",
+        imageRoute: "images/portada.jpg",
+        story: "Esto es una prueba",
+        onPressedLeft: (){
+          setState(() {
+            decision = true;
+          });
+        },
+        onPressedRight: (){
+          setState(() {
+            decision = false;
+          });
+        },
+      )
+    ];
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +51,22 @@ class _GamescreenState extends State<Gamescreen> {
       body: CustomProjectScrollView(
         child: Column(
           children: [
-
+            ComponentScene(
+              builder: SceneWithDecisionAndTittle(),
+              tittle: "escena de prueba",
+              imageRoute: "images/portada.jpg",
+              story: "Esto es una prueba",
+              onPressedLeft: (){
+                setState(() {
+                  decision = true;
+                });
+              },
+              onPressedRight: (){
+                setState(() {
+                  decision = false;
+                });
+              },
+            )
           ],
         ),
       ),
