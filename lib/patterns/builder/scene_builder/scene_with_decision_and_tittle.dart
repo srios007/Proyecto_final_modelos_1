@@ -1,6 +1,6 @@
 import '../../patterns.dart';
 
-abstract class SceneWithDecisionAndTittle implements BuilderSceneBase{
+ class SceneWithDecisionAndTittle extends BuilderSceneBase{
   @override
   bool addDecision(bool decision) {
     // TODO: implement addDecision

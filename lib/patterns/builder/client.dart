@@ -6,25 +6,21 @@ class Client {
     switch (type) {
       case 1:
         {
-          builderScene =
+          builderScene = new SceneWithTittle();
         }
         break;
 
       case 2:
         {
-          //statements;
+          builderScene = new SceneWithDecision();
         }
         break;
       case 3:
         {
-          //statements;
+          builderScene = new SceneWithDecisionAndTittle();
         }
         break;
-      case 4:
-        {
-          //statements;
-        }
-        break;
+
     }
   }
 }
