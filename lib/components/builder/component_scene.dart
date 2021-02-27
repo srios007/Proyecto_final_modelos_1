@@ -14,7 +14,11 @@ class ComponentScene extends StatelessWidget {
       this.onPressedLeft,
       this.onPressedRight,
       this.builder,
-      this.onPressedContinue});
+      this.onPressedContinue,
+      this.lblLeft,
+      this.lblRight,
+        this.lblContinue
+      });
 
   String tittle;
   @required
@@ -25,6 +29,9 @@ class ComponentScene extends StatelessWidget {
   Function onPressedRight;
   Function onPressedContinue;
   BuilderSceneBase builder;
+  String lblLeft;
+  String lblRight;
+  String lblContinue;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +41,12 @@ class ComponentScene extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            tittle != null
-            ?Center(
+            Center(
               child: Text(
                 builder.addTittle(tittle) ?? "",
                 style: GoogleFonts.poppins(textStyle: Styles.titleScene),
               ),
-            )
-            : const SizedBox.shrink(),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Container(
@@ -49,7 +54,7 @@ class ComponentScene extends StatelessWidget {
                 height: 250,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: ExactAssetImage(builder.addImage(imageRoute)),
+                    image: ExactAssetImage(builder.addImage(imageRoute?? "images/muerte.jpg")),
                     fit: BoxFit.fitWidth,
                   ),
                 ),
@@ -82,18 +87,18 @@ class ComponentScene extends StatelessWidget {
                         CustomButton(
                             width: MediaQuery.of(context).size.width * 0.4,
                             onPressed: onPressedLeft,
-                            title: "Pelear",
+                            title: lblLeft ?? "Pelear",
                             canPush: true),
                         CustomButton(
                             width: MediaQuery.of(context).size.width * 0.4,
                             onPressed: onPressedRight,
-                            title: "Escapar",
+                            title: lblRight ??  "Escapar",
                             canPush: true)
                       ],
                     )
                   : CustomButton(
                       onPressed: onPressedContinue,
-                      title: "Continuar",
+                      title:  lblContinue ?? "Continuar",
                       canPush: true),
             )
           ],
