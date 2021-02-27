@@ -5,6 +5,8 @@ import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 import 'package:proyecto_modelos_1/model/models.dart';
 import 'package:proyecto_modelos_1/patterns/patterns.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -25,13 +27,14 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.white,
+        backgroundColor: Palette.white,
         appBar: AppBar(
           backgroundColor: Palette.white,
           leading: CupertinoNavigationBarBackButton(
             color: Palette.mainBlue,
             onPressed: () {
               Navigator.pop(context);
+              player.stop();
             },
           ),
           elevation: 0,
@@ -110,23 +113,28 @@ class _GameScreenState extends State<GameScreen> {
           onPressedContinue: () {
             setState(() {
               i++;
+              playHandler(1);
             });
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(2),
+          builder: SceneBuilder().createScene(3),
           tittle: "Decisión",
           imageRoute: "images/4.jpg",
           story: "${labelsList[4].label}" ?? "",
           onPressedLeft: () {
             setState(() {
               i++;
+              player.stop();
+              player.dispose();
             });
           },
           onPressedRight: () {
             setState(() {
               i++;
               i++;
+              player.stop();
+              player.dispose();
             });
           },
         ),
@@ -138,6 +146,7 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = 17;
             });
+            playHandler(2);
           },
         ),
         ComponentScene(
@@ -157,6 +166,7 @@ class _GameScreenState extends State<GameScreen> {
           story: "${labelsList[7].label}" ?? "",
           onPressedContinue: () {
             setState(() {
+              playHandler(1);
               i++;
             });
           },
@@ -171,11 +181,15 @@ class _GameScreenState extends State<GameScreen> {
               i++;
               i++;
               i++;
+              player.stop();
+              player.dispose();
             });
           },
           onPressedRight: () {
             setState(() {
               i++;
+              player.stop();
+              player.dispose();
             });
           },
         ),
@@ -198,6 +212,7 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = 17;
             });
+            playHandler(2);
           },
         ),
         ComponentScene(
@@ -230,11 +245,12 @@ class _GameScreenState extends State<GameScreen> {
           onPressedContinue: () {
             setState(() {
               i++;
+              playHandler(1);
             });
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(3),
           tittle: "Decisión",
           imageRoute: "images/15.jpg",
           story: "${labelsList[11].label}" ?? "",
@@ -242,12 +258,16 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i++;
             });
+            player.stop();
+            player.dispose();
           },
           onPressedRight: () {
             setState(() {
               i++;
               i++;
             });
+            player.stop();
+            player.dispose();
           },
         ),
         ComponentScene(
@@ -259,6 +279,7 @@ class _GameScreenState extends State<GameScreen> {
               i++;
               i++;
             });
+            playHandler(2);
           },
         ),
         ComponentScene(
@@ -279,6 +300,8 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/muerte.jpg",
           story: "",
           onPressedLeft: () {
+            player.stop();
+            player.dispose();
             Navigator.pop(context);
           },
           lblLeft: "Terminar",
@@ -295,15 +318,20 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i++;
             });
+            playHandler(1);
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(3),
           tittle: "Decisión",
           imageRoute: "images/19.jpg",
           story: "Encontraste al Golem, ¿qué quieres hacer?",
           onPressedLeft: () {
+            player.stop();
+            player.dispose();
             setState(() {
+              playHandler(3);
+
               i++;
             });
           },
@@ -312,6 +340,8 @@ class _GameScreenState extends State<GameScreen> {
               i++;
               i++;
             });
+            player.stop();
+            player.dispose();
           },
         ),
         ComponentScene(
@@ -322,6 +352,7 @@ class _GameScreenState extends State<GameScreen> {
           lblContinue: "Finalizar",
           onPressedContinue: () {
             Navigator.pop(context);
+            player.stop();
           },
         ),
         ComponentScene(
@@ -332,9 +363,49 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = 17;
             });
+            playHandler(2);
           },
         ),
       ];
     }).catchError((e) {});
+  }
+
+  static AudioCache cache1 = AudioCache();
+  static AudioCache cache2 = AudioCache();
+  static AudioCache cache3 = AudioCache();
+
+  AudioPlayer player;
+
+  bool isPlaying = false;
+  bool isPaused = false;
+
+  void playHandler(int option) async {
+    switch (option) {
+      case 1:
+        {
+          player = await cache1.play('sounds/decision.mp3');
+        }
+        break;
+
+      case 2:
+        {
+          player = await cache2.play('sounds/lose.mp3');
+        }
+        break;
+      case 3:
+        {
+          player = await cache3.play('sounds/win.mp3');
+        }
+        break;
+    }
+
+    setState(() {
+      if (isPaused) {
+        isPlaying = false;
+        isPaused = false;
+      } else {
+        isPlaying = !isPlaying;
+      }
+    });
   }
 }

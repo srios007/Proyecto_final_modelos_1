@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Text(
-                "Una nueva aventura mediante patrones".toUpperCase(),
+                "Los patrones del destino".toUpperCase(),
                 style: GoogleFonts.poppins(textStyle: Styles.titleHomeScreen),
                 textAlign: TextAlign.center,
               ),
