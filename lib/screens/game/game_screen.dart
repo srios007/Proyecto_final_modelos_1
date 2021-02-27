@@ -12,29 +12,7 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   bool decision;
   List<Widget> scenes= [];
-  @override
-  void initState() {
-    // TODO: implement initState
-    scenes = [
-      ComponentScene(
-        builder: SceneWithDecisionAndTittle(),
-        tittle: "escena de prueba",
-        imageRoute: "images/portada.jpg",
-        story: "Esto es una prueba",
-        onPressedLeft: (){
-          setState(() {
-            decision = true;
-          });
-        },
-        onPressedRight: (){
-          setState(() {
-            decision = false;
-          });
-        },
-      )
-    ];
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,5 +49,28 @@ class _GameScreenState extends State<GameScreen> {
         ),
       ),
     );
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    scenes = [
+      ComponentScene(
+        builder: SceneBuilder().createScene(3),
+        tittle: "Introducción",
+        imageRoute: "images/portada.jpg",
+        story: "Esto es una prueba",
+        onPressedLeft: (){
+          setState(() {
+            decision = true;
+          });
+        },
+        onPressedRight: (){
+          setState(() {
+            decision = false;
+          });
+        },
+      )
+    ];
+    super.initState();
   }
 }

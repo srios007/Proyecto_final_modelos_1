@@ -20,10 +20,10 @@ class Client {
           builderScene = new SceneWithDecisionAndTittle();
         }
         break;
+
     }
   }
-
-  BuilderSceneBase getScene() {
+  BuilderSceneBase getScene(){
     return builderScene;
   }
 }
