@@ -25,6 +25,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.white,
         appBar: AppBar(
           backgroundColor: Palette.white,
           leading: CupertinoNavigationBarBackButton(
@@ -299,7 +300,7 @@ class _GameScreenState extends State<GameScreen> {
         ComponentScene(
           builder: SceneBuilder().createScene(1),
           tittle: "Decisión",
-          imageRoute: "images/18.jpg",
+          imageRoute: "images/19.jpg",
           story: "Encontraste al Golem, ¿qué quieres hacer?",
           onPressedLeft: () {
             setState(() {

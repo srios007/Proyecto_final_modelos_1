@@ -41,12 +41,14 @@ class ComponentScene extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            tittle != null
+            ?Center(
               child: Text(
                 builder.addTittle(tittle) ?? "",
                 style: GoogleFonts.poppins(textStyle: Styles.titleScene),
               ),
-            ),
+            )
+            : const SizedBox.shrink(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Container(

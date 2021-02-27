@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.white,
       appBar: AppBar(
         backgroundColor: Palette.white,
         leading: CupertinoNavigationBarBackButton(
@@ -31,9 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 "Una nueva aventura mediante patrones".toUpperCase(),
-                style: GoogleFonts.poppins(
-                  textStyle: Styles.titleHomeScreen
-                ),
+                style: GoogleFonts.poppins(textStyle: Styles.titleHomeScreen),
                 textAlign: TextAlign.center,
               ),
               CustomExpanded(),
@@ -45,13 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     fit: BoxFit.fitHeight,
                   ),
                 ),
-
               ),
-              CustomExpanded(),
-
+              CustomExpanded(flex: 2),
               CustomButton(
                 title: "Iniciar",
-                onPressed: (){
+                onPressed: () {
                   Navigator.push(
                     context,
                     CupertinoPageRoute(
@@ -64,12 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 15),
               CustomButton(
                 title: "Instrucciones",
-                onPressed: (){},
+                onPressed: () {},
                 canPush: true,
-
               ),
               CustomExpanded(),
-
             ],
           ),
         ),
