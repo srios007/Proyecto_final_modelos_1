@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_alert/flutter_alert.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 import 'package:proyecto_modelos_1/model/models.dart';
 import 'package:proyecto_modelos_1/patterns/patterns.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
+import 'package:proyecto_modelos_1/screens/game/reward_screen.dart';
 
 class GameScreen extends StatefulWidget {
   int i;
@@ -46,7 +48,7 @@ class _GameScreenState extends State<GameScreen> {
           leading: CupertinoNavigationBarBackButton(
             color: Palette.mainBlue,
             onPressed: () {
-              Navigator.pop(context, i);
+              Navigator.pop(context, i > 0 ? i - 1 : i);
               player.stop();
             },
           ),
@@ -157,6 +159,7 @@ class _GameScreenState extends State<GameScreen> {
               player.stop();
               player.dispose();
             });
+            showBasicAlert();
           },
         ),
         ComponentScene(
@@ -207,6 +210,7 @@ class _GameScreenState extends State<GameScreen> {
               player.stop();
               player.dispose();
             });
+            showBasicAlert();
           },
           onPressedRight: () {
             setState(() {
@@ -293,6 +297,7 @@ class _GameScreenState extends State<GameScreen> {
             });
             player.stop();
             player.dispose();
+            showBasicAlert();
           },
         ),
         ComponentScene(
@@ -327,7 +332,7 @@ class _GameScreenState extends State<GameScreen> {
           onPressedLeft: () {
             player.stop();
             player.dispose();
-            Navigator.pop(context);
+            Navigator.pop(context, 0);
           },
           lblLeft: "Terminar",
           onPressedRight: () {
@@ -364,6 +369,7 @@ class _GameScreenState extends State<GameScreen> {
 
               i++;
             });
+            showBasicAlert();
           },
           onPressedRight: () {
             setState(() {
@@ -381,7 +387,13 @@ class _GameScreenState extends State<GameScreen> {
           story: "${labelsList[15].label}" ?? "",
           lblContinue: "Finalizar",
           onPressedContinue: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => RewardScreen(),
+              ),
+            );
+            //Navigator.pop(context);
             player.stop();
           },
         ),
@@ -445,5 +457,19 @@ class _GameScreenState extends State<GameScreen> {
         isPlaying = !isPlaying;
       }
     });
+  }
+
+  void showBasicAlert() {
+    showAlert(
+      context: context,
+      title: "¡Enhorabuena!",
+      body: "Has ganado una skin para tu personaje",
+      actions: [
+        AlertAction(
+          text: "Aceptar",
+          isDefaultAction: true,
+        ),
+      ],
+    );
   }
 }

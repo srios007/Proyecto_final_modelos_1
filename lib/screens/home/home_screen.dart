@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               CustomExpanded(),
               Container(
-                height: 200,
+                height: 250,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: ExactAssetImage('images/portada.jpg'),
