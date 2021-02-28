@@ -9,6 +9,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
 
 class GameScreen extends StatefulWidget {
+  int i;
+
+  GameScreen({this.i});
+
   @override
   _GameScreenState createState() => _GameScreenState();
 }
@@ -17,11 +21,20 @@ class _GameScreenState extends State<GameScreen> {
   List<Widget> scenes = [];
   List<Label> labelsList = [];
   int i = 0;
+  Originator originator;
+  Caretaker caretaker;
+  bool isLoading = false;
+
   @override
   void initState() {
     _getLabels();
-
     super.initState();
+    setState(() {
+      i = widget.i;
+    });
+    originator = Originator(i);
+    caretaker = Caretaker();
+    caretaker.setMemento(originator.createMemento());
   }
 
   @override
@@ -33,13 +46,13 @@ class _GameScreenState extends State<GameScreen> {
           leading: CupertinoNavigationBarBackButton(
             color: Palette.mainBlue,
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context, i);
               player.stop();
             },
           ),
           elevation: 0,
         ),
-        body: scenes[i]);
+        body: isLoading ? loadingScreen() : scenes[i]);
   }
 
   void _getLabels() {
@@ -56,6 +69,9 @@ class _GameScreenState extends State<GameScreen> {
         },
       ),
     ];
+    setState(() {
+      isLoading = true;
+    });
     Firestore.instance
         .collection("labels")
         .orderBy("id", descending: false)
@@ -72,6 +88,9 @@ class _GameScreenState extends State<GameScreen> {
           });
         });
       }
+      setState(() {
+        isLoading = false;
+      });
       scenes.clear();
       scenes = [
         ComponentScene(
@@ -113,8 +132,10 @@ class _GameScreenState extends State<GameScreen> {
           onPressedContinue: () {
             setState(() {
               i++;
-              playHandler(1);
             });
+            playHandler(1);
+            originator.setCounter(i);
+            caretaker.setMemento(originator.createMemento());
           },
         ),
         ComponentScene(
@@ -166,9 +187,11 @@ class _GameScreenState extends State<GameScreen> {
           story: "${labelsList[7].label}" ?? "",
           onPressedContinue: () {
             setState(() {
-              playHandler(1);
               i++;
             });
+            playHandler(1);
+            originator.setCounter(i);
+            caretaker.setMemento(originator.createMemento());
           },
         ),
         ComponentScene(
@@ -245,8 +268,10 @@ class _GameScreenState extends State<GameScreen> {
           onPressedContinue: () {
             setState(() {
               i++;
-              playHandler(1);
             });
+            playHandler(1);
+            originator.setCounter(i);
+            caretaker.setMemento(originator.createMemento());
           },
         ),
         ComponentScene(
@@ -306,7 +331,10 @@ class _GameScreenState extends State<GameScreen> {
           },
           lblLeft: "Terminar",
           onPressedRight: () {
-            setState(() {});
+            setState(() {
+              i = originator.getCounter();
+            });
+            playHandler(1);
           },
           lblRight: "Usar reliquia",
         ),
@@ -319,6 +347,8 @@ class _GameScreenState extends State<GameScreen> {
               i++;
             });
             playHandler(1);
+            originator.setCounter(i);
+            caretaker.setMemento(originator.createMemento());
           },
         ),
         ComponentScene(
@@ -367,7 +397,15 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
       ];
-    }).catchError((e) {});
+    }).catchError((e) {
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
+
+  Widget loadingScreen() {
+    return Container();
   }
 
   static AudioCache cache1 = AudioCache();

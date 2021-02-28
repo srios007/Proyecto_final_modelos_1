@@ -13,6 +13,7 @@ class _InstructionsState extends State<Instructions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.white,
       appBar: AppBar(
         backgroundColor: Palette.white,
         leading: CupertinoNavigationBarBackButton(

@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int aux = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,13 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
               CustomExpanded(flex: 2),
               CustomButton(
                 title: "Iniciar",
-                onPressed: () {
-                  Navigator.push(
+                onPressed: () async{
+                  final result = await Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => GameScreen(),
+                      builder: (context) => GameScreen(i: aux),
                     ),
                   );
+                  if(result != null){
+                    setState(() {
+                      aux = result;
+                    });
+                  }
                 },
                 canPush: true,
               ),
