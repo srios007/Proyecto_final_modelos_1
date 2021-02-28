@@ -8,11 +8,7 @@ class SceneWithTittle extends BuilderSceneBase{
     return tittle;
   }
 
-  bool addDecision(bool decision) {
-    // TODO: implement addDecision
-    scene.decision = decision;
-    return decision;
-  }
+
 
 
 }

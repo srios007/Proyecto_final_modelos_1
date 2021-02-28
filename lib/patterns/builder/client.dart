@@ -12,12 +12,7 @@ class Client {
 
       case 2:
         {
-          builderScene = new SceneWithDecision();
-        }
-        break;
-      case 3:
-        {
-          builderScene = new SceneWithDecisionAndTittle();
+          builderScene = new SceneWithoutTittle();
         }
         break;
 

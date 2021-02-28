@@ -12,7 +12,6 @@ abstract class BuilderSceneBase{
     scene.story = story;
     return story;
   }
-  bool addDecision(bool decision);
 
   String addTittle(String tittle);
 

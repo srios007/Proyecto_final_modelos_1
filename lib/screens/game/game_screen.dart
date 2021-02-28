@@ -118,7 +118,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/2.jpg",
           story: "${labelsList[2].label}" ?? "",
           onPressedContinue: () {
@@ -128,7 +128,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/3.jpg",
           story: "${labelsList[3].label}" ?? "",
           onPressedContinue: () {
@@ -141,7 +141,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(3),
+          builder: SceneBuilder().createScene(1),
           tittle: "Decisión",
           imageRoute: "images/4.jpg",
           story: "${labelsList[4].label}" ?? "",
@@ -163,7 +163,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/5.jpg",
           story: "${labelsList[5].label}" ?? "",
           onPressedContinue: () {
@@ -185,7 +185,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/7.png",
           story: "${labelsList[7].label}" ?? "",
           onPressedContinue: () {
@@ -198,7 +198,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(3),
+          builder: SceneBuilder().createScene(1),
           tittle: "Decisión",
           imageRoute: "images/9.jpg",
           story: "${labelsList[8].label}" ?? "",
@@ -221,7 +221,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/11.png",
           story: "${labelsList[9].label}" ?? "",
           onPressedContinue: () {
@@ -279,7 +279,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(3),
+          builder: SceneBuilder().createScene(1),
           tittle: "Decisión",
           imageRoute: "images/15.jpg",
           story: "${labelsList[11].label}" ?? "",
@@ -301,7 +301,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/16.jpg",
           story: "${labelsList[12].label}" ?? "",
           onPressedContinue: () {
@@ -325,7 +325,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(3),
+          builder: SceneBuilder().createScene(1),
           tittle: "Fallaste",
           imageRoute: "images/muerte.jpg",
           story: "",
@@ -344,7 +344,7 @@ class _GameScreenState extends State<GameScreen> {
           lblRight: "Usar reliquia",
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/18.jpg",
           story: "${labelsList[14].label}" ?? "",
           onPressedContinue: () {
@@ -357,7 +357,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(3),
+          builder: SceneBuilder().createScene(1),
           tittle: "Decisión",
           imageRoute: "images/19.jpg",
           story: "Encontraste al Golem, ¿qué quieres hacer?",
@@ -398,7 +398,7 @@ class _GameScreenState extends State<GameScreen> {
           },
         ),
         ComponentScene(
-          builder: SceneBuilder().createScene(1),
+          builder: SceneBuilder().createScene(2),
           imageRoute: "images/21.jpg",
           story: "${labelsList[16].label}" ?? "",
           onPressedContinue: () {
