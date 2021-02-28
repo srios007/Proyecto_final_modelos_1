@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.com.proyecto_modelos_1">
    <application
-        android:label="proyecto_modelos_1"
+        android:label="Patrones del destino"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

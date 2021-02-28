@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
@@ -12,20 +13,37 @@ class _InstructionsState extends State<Instructions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Palette.white,
+        leading: CupertinoNavigationBarBackButton(
+          color: Palette.mainBlue,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        elevation: 0,
+        title: Text(
+          "Los Patrones del Destino",
+          style: GoogleFonts.poppins(textStyle: TextStyle(
+              color: Palette.mainBlue,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1.2
+          )),
+        ),
+        centerTitle: true,
+      ),
       body: CustomProjectScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Los Patrones del Destino",
-                style: GoogleFonts.poppins(textStyle: Styles.titleScene),
-              ),
+
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.only(bottom: 20),
                 child: Container(
-                  height: 200,
+                  height: 250,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: ExactAssetImage('images/instrucciones.jpeg'),
