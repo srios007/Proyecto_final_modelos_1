@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 import 'package:proyecto_modelos_1/screens/game/game_screen.dart';
+import 'package:proyecto_modelos_1/screens/home/instructions.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -61,7 +62,14 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 15),
               CustomButton(
                 title: "Instrucciones",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => Instructions(),
+                    ),
+                  );
+                },
                 canPush: true,
               ),
               CustomExpanded(),
