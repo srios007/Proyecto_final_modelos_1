@@ -10,3 +10,7 @@ export 'builder/builder_scene_base.dart';
 export 'builder/client.dart';
 
 export 'builder/scene.dart';
+/// Memento
+export "memento/inmemento.dart";
+export "memento/memento.dart";
+export "memento/scene_indicator.dart";
