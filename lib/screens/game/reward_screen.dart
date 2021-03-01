@@ -1,15 +1,39 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_alert/flutter_alert.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
+import 'package:proyecto_modelos_1/patterns/patterns.dart';
 
 class RewardScreen extends StatefulWidget {
+  int i;
+  bool isHome;
+  RewardScreen(this.i, this.isHome);
   @override
   _RewardScreenState createState() => _RewardScreenState();
 }
 
 class _RewardScreenState extends State<RewardScreen> {
-  String image = "skinBase";
+  Skin skinBase, skin1, skin2, skin3;
+  String label =
+      "Por finalizar el juego, has ganado algunas recompensas, ¡Disfrutalas!";
+
+  String image = "images/skinBase.png";
+  @override
+  void initState() {
+    skinBase = SkinBase();
+    skin1 = Skin1(skinBase);
+    skin2 = Skin2(skin1);
+    skin3 = Skin3(skin2);
+    Timer(Duration(seconds: 2), () {
+      showBasicAlert(label);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,67 +43,106 @@ class _RewardScreenState extends State<RewardScreen> {
         leading: CupertinoNavigationBarBackButton(
           color: Palette.mainBlue,
           onPressed: () {
-            Navigator.pop(context);
+            if (widget.isHome) {
+              Navigator.pop(context, widget.i);
+            } else {
+              Navigator.pop(context, widget.i);
+              Navigator.pop(context, widget.i);
+            }
           },
         ),
-        title: Text("Recompensas"),
+        title: Text(
+          "Recompensas",
+          style: GoogleFonts.poppins(
+              textStyle: TextStyle(
+                  color: Palette.mainBlue,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.2)),
+        ),
         elevation: 0,
+        centerTitle: true,
       ),
       body: CustomProjectScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Container(
-                height: 250,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: ExactAssetImage('images/$image.png'),
-                    fit: BoxFit.fitHeight,
+          child: Container(
+            child: Column(
+              children: [
+                Container(
+                  height: 350,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: ExactAssetImage(image),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          image = "skinBase";
-                        });
-                      },
-                      title: "Base",
-                      width: MediaQuery.of(context).size.width * 0.2),
-                  CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          image = "skin1";
-                        });
-                      },
-                      title: "Skin 1",
-                      width: MediaQuery.of(context).size.width * 0.2),
-                  CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          image = "skin2";
-                        });
-                      },
-                      title: "Skin 2",
-                      width: MediaQuery.of(context).size.width * 0.2),
-                  CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          image = "skin3";
-                        });
-                      },
-                      title: "Skin 3",
-                      width: MediaQuery.of(context).size.width * 0.2)
-                ],
-              )
-            ],
+                CustomExpanded(),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                      child: CustomButton(
+                          onPressed: () {
+                            setState(() {
+                              image = skinBase.getSkin();
+                            });
+                          },
+                          title: "Base",
+                          canPush: true),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: CustomButton(
+                          onPressed: () {
+                            setState(() {
+                              image = skin1.getSkin();
+                            });
+                          },
+                          title: "Skin 1",
+                          canPush: true),
+                    ),
+                    CustomButton(
+                        onPressed: () {
+                          setState(() {
+                            image = skin2.getSkin();
+                          });
+                        },
+                        title: "Skin 2",
+                        canPush: true),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: CustomButton(
+                          onPressed: () {
+                            setState(() {
+                              image = skin3.getSkin();
+                            });
+                          },
+                          title: "Skin 3",
+                          canPush: true),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  void showBasicAlert(String label) {
+    showAlert(
+      context: context,
+      title: "¡Enhorabuena!",
+      body: label,
+      actions: [
+        AlertAction(
+          text: "Aceptar",
+          isDefaultAction: true,
+        ),
+      ],
     );
   }
 }

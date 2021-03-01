@@ -13,8 +13,8 @@ export "memento/caretaker.dart";
 
 /// Decorator
 export "decorator/change_skin.dart";
-export "decorator/skin.dart";
-export 'decorator/skin_base.dart';
-export "decorator/skin_1.dart";
-export "decorator/skin_2.dart";
-export "decorator/skin_3.dart";
+export 'decorator/skins/skin.dart';
+export 'decorator/skins/skin_base.dart';
+export 'decorator/skins/skin_1.dart';
+export 'decorator/skins/skin_2.dart';
+export 'decorator/skins/skin_3.dart';

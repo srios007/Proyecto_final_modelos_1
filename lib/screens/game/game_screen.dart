@@ -26,6 +26,7 @@ class _GameScreenState extends State<GameScreen> {
   Originator originator;
   Caretaker caretaker;
   bool isLoading = false;
+  String label = 'Has ganado una skin para tu personaje';
 
   @override
   void initState() {
@@ -48,7 +49,8 @@ class _GameScreenState extends State<GameScreen> {
           leading: CupertinoNavigationBarBackButton(
             color: Palette.mainBlue,
             onPressed: () {
-              Navigator.pop(context, i > 0 ? i - 1 : i);
+              i = originator.getCounter();
+              Navigator.pop(context, i);
               player.stop();
             },
           ),
@@ -132,12 +134,12 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/3.jpg",
           story: "${labelsList[3].label}" ?? "",
           onPressedContinue: () {
-            setState(() {
-              i++;
-            });
             playHandler(1);
             originator.setCounter(i);
             caretaker.setMemento(originator.createMemento());
+            setState(() {
+              i++;
+            });
           },
         ),
         ComponentScene(
@@ -159,7 +161,7 @@ class _GameScreenState extends State<GameScreen> {
               player.stop();
               player.dispose();
             });
-            showBasicAlert();
+            showBasicAlert(label);
           },
         ),
         ComponentScene(
@@ -189,12 +191,12 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/7.png",
           story: "${labelsList[7].label}" ?? "",
           onPressedContinue: () {
-            setState(() {
-              i++;
-            });
             playHandler(1);
             originator.setCounter(i);
             caretaker.setMemento(originator.createMemento());
+            setState(() {
+              i++;
+            });
           },
         ),
         ComponentScene(
@@ -210,7 +212,7 @@ class _GameScreenState extends State<GameScreen> {
               player.stop();
               player.dispose();
             });
-            showBasicAlert();
+            showBasicAlert(label);
           },
           onPressedRight: () {
             setState(() {
@@ -270,12 +272,12 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/14.jpg",
           story: "",
           onPressedContinue: () {
-            setState(() {
-              i++;
-            });
             playHandler(1);
             originator.setCounter(i);
             caretaker.setMemento(originator.createMemento());
+            setState(() {
+              i++;
+            });
           },
         ),
         ComponentScene(
@@ -297,7 +299,7 @@ class _GameScreenState extends State<GameScreen> {
             });
             player.stop();
             player.dispose();
-            showBasicAlert();
+            showBasicAlert(label);
           },
         ),
         ComponentScene(
@@ -348,12 +350,12 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/18.jpg",
           story: "${labelsList[14].label}" ?? "",
           onPressedContinue: () {
-            setState(() {
-              i++;
-            });
             playHandler(1);
             originator.setCounter(i);
             caretaker.setMemento(originator.createMemento());
+            setState(() {
+              i++;
+            });
           },
         ),
         ComponentScene(
@@ -369,7 +371,7 @@ class _GameScreenState extends State<GameScreen> {
 
               i++;
             });
-            showBasicAlert();
+            showBasicAlert(label);
           },
           onPressedRight: () {
             setState(() {
@@ -386,15 +388,19 @@ class _GameScreenState extends State<GameScreen> {
           imageRoute: "images/20.jpg",
           story: "${labelsList[15].label}" ?? "",
           lblContinue: "Finalizar",
-          onPressedContinue: () {
-            Navigator.push(
+          onPressedContinue: () async {
+            i = originator.getCounter();
+            final result = await Navigator.push(
               context,
               CupertinoPageRoute(
-                builder: (context) => RewardScreen(),
+                builder: (context) => RewardScreen(i, false),
               ),
             );
-            //Navigator.pop(context);
+            setState(() {
+              i = result;
+            });
             player.stop();
+
           },
         ),
         ComponentScene(
@@ -459,11 +465,11 @@ class _GameScreenState extends State<GameScreen> {
     });
   }
 
-  void showBasicAlert() {
+  void showBasicAlert(String label) {
     showAlert(
       context: context,
       title: "¡Enhorabuena!",
-      body: "Has ganado una skin para tu personaje",
+      body: label,
       actions: [
         AlertAction(
           text: "Aceptar",
@@ -472,4 +478,7 @@ class _GameScreenState extends State<GameScreen> {
       ],
     );
   }
+
+
+
 }

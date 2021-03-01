@@ -1,4 +1,4 @@
-import '../patterns.dart';
+import '../../patterns.dart';
 
 class SkinBase extends Skin{
   @override

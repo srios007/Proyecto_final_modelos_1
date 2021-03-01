@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 import 'package:proyecto_modelos_1/screens/game/game_screen.dart';
+import 'package:proyecto_modelos_1/screens/game/reward_screen.dart';
 import 'package:proyecto_modelos_1/screens/home/instructions.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,6 +79,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 canPush: true,
               ),
+              const SizedBox(height: 15),
+              aux == 18
+                ?CustomButton(
+                title: "Recompensa",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => RewardScreen(18,true),
+                    ),
+                  );
+                },
+                canPush: true,
+              )
+                  :const SizedBox.shrink(),
               CustomExpanded(),
             ],
           ),

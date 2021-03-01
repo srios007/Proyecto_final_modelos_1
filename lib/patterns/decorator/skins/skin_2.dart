@@ -1,4 +1,4 @@
-import '../patterns.dart';
+import '../../patterns.dart';
 
 class Skin2 extends ChangeSkin{
   Skin2(Skin skin) : super(skin);
