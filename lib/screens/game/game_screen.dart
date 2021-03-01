@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alert/flutter_alert.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
 import 'package:proyecto_modelos_1/model/models.dart';
@@ -54,7 +55,17 @@ class _GameScreenState extends State<GameScreen> {
               player.stop();
             },
           ),
+          title: Text(
+            "Aventura",
+            style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                    color: Palette.mainBlue,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.2)),
+          ),
           elevation: 0,
+          centerTitle: true,
         ),
         body: isLoading ? loadingScreen() : scenes[i]);
   }
@@ -341,7 +352,6 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = originator.getCounter();
             });
-            playHandler(1);
           },
           lblRight: "Usar reliquia",
         ),
@@ -390,6 +400,8 @@ class _GameScreenState extends State<GameScreen> {
           lblContinue: "Finalizar",
           onPressedContinue: () async {
             i = originator.getCounter();
+            player.stop();
+            player.dispose();
             final result = await Navigator.push(
               context,
               CupertinoPageRoute(
@@ -399,7 +411,6 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = result;
             });
-            player.stop();
 
           },
         ),

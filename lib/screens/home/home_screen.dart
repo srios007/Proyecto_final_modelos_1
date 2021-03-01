@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_alert/flutter_alert.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_modelos_1/components/components.dart';
 import 'package:proyecto_modelos_1/config/config.dart';
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   final result = await Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => GameScreen(i: aux),
+                      builder: (context) => GameScreen(i: aux == 18 ? 0:aux),
                     ),
                   );
                   if(result != null){
@@ -99,6 +100,27 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  void showBasicAlert() {
+    showAlert(
+      context: context,
+      title: "¡Enhorabuena!",
+      body: "label",
+      actions: [
+        AlertAction(
+          text: "Continuar",
+          isDefaultAction: true,
+          onPressed: (){
+
+          }
+        ),
+        AlertAction(
+          text: "Regresar",
+          isDefaultAction: true,
+        ),
+      ],
     );
   }
 }
