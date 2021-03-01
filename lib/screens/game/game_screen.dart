@@ -345,7 +345,11 @@ class _GameScreenState extends State<GameScreen> {
           onPressedLeft: () {
             player.stop();
             player.dispose();
-            Navigator.pop(context, 0);
+            if (i == 18) {
+              Navigator.pop(context, 18);
+            } else {
+              Navigator.pop(context, 0);
+            }
           },
           lblLeft: "Terminar",
           onPressedRight: () {
@@ -411,7 +415,6 @@ class _GameScreenState extends State<GameScreen> {
             setState(() {
               i = result;
             });
-
           },
         ),
         ComponentScene(
@@ -489,7 +492,4 @@ class _GameScreenState extends State<GameScreen> {
       ],
     );
   }
-
-
-
 }

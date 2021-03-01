@@ -29,7 +29,7 @@ class _RewardScreenState extends State<RewardScreen> {
     skin2 = Skin2(skin1);
     skin3 = Skin3(skin2);
     if(!widget.isHome){
-      Timer(Duration(seconds: 2), () {
+      Timer(Duration(seconds: 1), () {
         showBasicAlert(label);
       });
     }
