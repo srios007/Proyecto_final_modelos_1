@@ -101,7 +101,7 @@ class _InstructionsState extends State<Instructions> {
                     ),
                     children: <InlineSpan>[
                       TextSpan(
-                        text: "Al dar inicio al juego se nos presentará la narración de una historia que te sumergirá en la aventura de nuestros héroes",
+                        text: "Al dar inicio al juego se te presentará la narración de una historia que te sumergirá en la aventura de nuestros héroes",
                         style: GoogleFonts.poppins(
                           textStyle: Styles.labelScene
                         )

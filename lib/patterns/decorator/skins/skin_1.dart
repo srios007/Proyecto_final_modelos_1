@@ -1,7 +1,6 @@
 import '../../patterns.dart';
 
 class Skin1 extends ChangeSkin{
-
   Skin1(Skin skin) : super(skin);
 
   @override
